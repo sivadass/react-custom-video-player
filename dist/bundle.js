@@ -346,7 +346,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _media_sample_video_mp4__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! .././media/sample-video.mp4 */ \"./src/media/sample-video.mp4\");\n/* harmony import */ var _media_sample_video_mp4__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_media_sample_video_mp4__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _css_video_player_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/video-player.css */ \"./src/css/video-player.css\");\n/* harmony import */ var _css_video_player_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_video_player_css__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nclass VideoPlayer extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {\n  render() {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"video\", { src: \"dist/\" + _media_sample_video_mp4__WEBPACK_IMPORTED_MODULE_1___default.a, controls: true });\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (VideoPlayer);\n\n//# sourceURL=webpack:///./src/components/video-player.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _media_sample_video_mp4__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! .././media/sample-video.mp4 */ \"./src/media/sample-video.mp4\");\n/* harmony import */ var _media_sample_video_mp4__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_media_sample_video_mp4__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _css_video_player_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../css/video-player.css */ \"./src/css/video-player.css\");\n/* harmony import */ var _css_video_player_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_css_video_player_css__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _media_play_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../media/play.svg */ \"./src/media/play.svg\");\n/* harmony import */ var _media_play_svg__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_media_play_svg__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _media_pause_svg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../media/pause.svg */ \"./src/media/pause.svg\");\n/* harmony import */ var _media_pause_svg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_media_pause_svg__WEBPACK_IMPORTED_MODULE_4__);\n\n\n\n\n\n\n\nclass VideoPlayer extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {\n  constructor(props) {\n    super(props);\n    this.videoRef = react__WEBPACK_IMPORTED_MODULE_0___default.a.createRef();\n\n    this.state = {\n      playPauseIcon: _media_play_svg__WEBPACK_IMPORTED_MODULE_3___default.a\n    };\n  }\n\n  handlePlayPause() {\n    if (this.videoRef.current.paused) {\n      this.videoRef.current.play();\n      this.setState({\n        playPauseIcon: _media_pause_svg__WEBPACK_IMPORTED_MODULE_4___default.a\n      });\n    } else {\n      this.videoRef.current.pause();\n      this.setState({\n        playPauseIcon: _media_play_svg__WEBPACK_IMPORTED_MODULE_3___default.a\n      });\n    }\n  }\n\n  render() {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n      \"div\",\n      { className: _css_video_player_css__WEBPACK_IMPORTED_MODULE_2___default.a.videoContainer },\n      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"video\", {\n        className: _css_video_player_css__WEBPACK_IMPORTED_MODULE_2___default.a.videoElement,\n        ref: this.videoRef,\n        src: \"dist/\" + _media_sample_video_mp4__WEBPACK_IMPORTED_MODULE_1___default.a,\n        controls: false\n      }),\n      react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n        \"div\",\n        { className: _css_video_player_css__WEBPACK_IMPORTED_MODULE_2___default.a.videoControls },\n        react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n          \"button\",\n          { onClick: this.handlePlayPause.bind(this) },\n          react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"img\", { src: \"dist/\" + this.state.playPauseIcon, width: \"32px\" })\n        )\n      )\n    );\n  }\n}\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (VideoPlayer);\n\n//# sourceURL=webpack:///./src/components/video-player.js?");
 
 /***/ }),
 
@@ -368,7 +368,7 @@ eval("// removed by extract-text-webpack-plugin\nmodule.exports = {\"wrapper\":\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./src/css/video-player.css?");
+eval("// removed by extract-text-webpack-plugin\nmodule.exports = {\"videoContainer\":\"_2QO9JnRSQ6wKMFQo1tXjl0\",\"videoControls\":\"_1sVH9CS9WqTjIHRM1A_qNo\"};\n\n//# sourceURL=webpack:///./src/css/video-player.css?");
 
 /***/ }),
 
@@ -381,6 +381,28 @@ eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./sr
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _components_video_player__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/video-player */ \"./src/components/video-player.js\");\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./css/main.css */ \"./src/css/main.css\");\n/* harmony import */ var _css_main_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_css_main_css__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\n\nconst App = () => {\n  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n    \"div\",\n    { className: _css_main_css__WEBPACK_IMPORTED_MODULE_3___default.a.wrapper },\n    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\n      \"h1\",\n      { className: _css_main_css__WEBPACK_IMPORTED_MODULE_3___default.a.title },\n      \"React Custom Video Player\"\n    ),\n    react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_video_player__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null)\n  );\n};\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(App, null), document.getElementById(\"root\"));\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/media/pause.svg":
+/*!*****************************!*\
+  !*** ./src/media/pause.svg ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"pause.svg?6a6f4160d76e4c58ea0769aa822a1a87\";\n\n//# sourceURL=webpack:///./src/media/pause.svg?");
+
+/***/ }),
+
+/***/ "./src/media/play.svg":
+/*!****************************!*\
+  !*** ./src/media/play.svg ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"play.svg?bee6ec5dadef0ecbf4ac479a6a9b5a1c\";\n\n//# sourceURL=webpack:///./src/media/play.svg?");
 
 /***/ }),
 
