@@ -4,7 +4,7 @@ import "../css/video-player.css";
 
 class VideoPlayer extends React.Component {
   render() {
-    return <video src={"/dist/" + videoSrc} controls />;
+    return <video src={"dist/" + videoSrc} controls />;
   }
 }
 
