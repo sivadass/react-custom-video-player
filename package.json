@@ -1,0 +1,35 @@
+{
+  "name": "react-custom-video-player",
+  "version": "0.0.1",
+  "description": "HTML5 Video Player built in React with Customizable UI Controls",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "npx webpack --config webpack.config.js",
+    "build": "npx webpack -p --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sivadass/react-custom-video-player.git"
+  },
+  "author": "Sivadass N",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sivadass/react-custom-video-player/issues"
+  },
+  "homepage": "https://github.com/sivadass/react-custom-video-player#readme",
+  "dependencies": {
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "webpack": "^4.10.2",
+    "webpack-cli": "^3.0.1"
+  }
+}
