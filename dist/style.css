@@ -4,6 +4,7 @@ video {
 }
 ._2QO9JnRSQ6wKMFQo1tXjl0 {
   position: relative;
+  overflow: hidden;
 }
 ._1sVH9CS9WqTjIHRM1A_qNo {
   position: absolute;
@@ -12,8 +13,44 @@ video {
   width: 100%;
   height: 48px;
   background: rgba(0, 0, 0, 0.66);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 300ms ease-in;
+  z-index: 3;
 }
-
+._3dNZ0ru_J9_ymHW2ofjbuX {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+._2it6zfhO8y8-tYt_aAc7RW {
+  animation: _1iBG-iGfIdnsGrKGPn96ZQ 2s infinite linear;
+  height: 36px;
+  width: 36px;
+  display: inline-block;
+  background-image: url(loading.png?64a8ccf424d8d9d77e348559b502df95);
+  background-repeat: no-repeat;
+  background-position: 0;
+}
+@keyframes _1iBG-iGfIdnsGrKGPn96ZQ {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+._2QO9JnRSQ6wKMFQo1tXjl0:hover ._1sVH9CS9WqTjIHRM1A_qNo {
+  visibility: visible;
+  opacity: 1;
+}
 ._3y3b3tsxTjtcEVXsOFP4_I {
   background: transparent;
   border: none;
@@ -22,7 +59,6 @@ video {
   outline: none;
   cursor: pointer;
 }
-
 ._3y3b3tsxTjtcEVXsOFP4_I:hover {
   background: rgba(255, 255, 255, 0.15);
 }

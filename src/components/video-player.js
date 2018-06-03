@@ -4,6 +4,7 @@ import style from "../css/video-player.css";
 
 import playIcon from "../media/play.svg";
 import pauseIcon from "../media/pause.svg";
+import loadingIcon from "../media/loading.svg";
 
 class VideoPlayer extends React.Component {
   constructor(props) {
@@ -11,11 +12,13 @@ class VideoPlayer extends React.Component {
     this.videoRef = React.createRef();
 
     this.state = {
+      isLoading: false,
       playPauseIcon: playIcon
     };
   }
 
   handlePlayPause() {
+    console.log(this.videoRef.current.currentTime);
     if (this.videoRef.current.paused) {
       this.videoRef.current.play();
       this.setState({
@@ -28,6 +31,16 @@ class VideoPlayer extends React.Component {
       });
     }
   }
+  handleCanPlay() {
+    this.setState({
+      isLoading: false
+    });
+  }
+  handleWaiting() {
+    this.setState({
+      isLoading: true
+    });
+  }
 
   render() {
     return (
@@ -37,7 +50,14 @@ class VideoPlayer extends React.Component {
           ref={this.videoRef}
           src={"dist/" + videoSrc}
           controls={false}
+          onCanPlay={this.handleCanPlay.bind(this)}
+          onWaiting={this.handleWaiting.bind(this)}
         />
+        {this.state.isLoading && (
+          <div className={style.videoOverlay}>
+            <span className={style.videoLoading}>&nbsp;</span>
+          </div>
+        )}
         <div className={style.videoControls}>
           <button
             className={style.playPauseButton}

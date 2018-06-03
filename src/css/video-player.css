@@ -4,6 +4,7 @@ video {
 }
 .videoContainer {
   position: relative;
+  overflow: hidden;
 }
 .videoControls {
   position: absolute;
@@ -12,8 +13,44 @@ video {
   width: 100%;
   height: 48px;
   background: rgba(0, 0, 0, 0.66);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 300ms ease-in;
+  z-index: 3;
 }
-
+.videoOverlay {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.videoLoading {
+  animation: rotation 2s infinite linear;
+  height: 36px;
+  width: 36px;
+  display: inline-block;
+  background-image: url("../media/loading.png");
+  background-repeat: no-repeat;
+  background-position: 0;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+.videoContainer:hover .videoControls {
+  visibility: visible;
+  opacity: 1;
+}
 .playPauseButton {
   background: transparent;
   border: none;
@@ -22,7 +59,6 @@ video {
   outline: none;
   cursor: pointer;
 }
-
 .playPauseButton:hover {
   background: rgba(255, 255, 255, 0.15);
 }
