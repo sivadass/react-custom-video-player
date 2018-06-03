@@ -13,3 +13,16 @@ video {
   height: 48px;
   background: rgba(0, 0, 0, 0.66);
 }
+
+.playPauseButton {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  height: 48px;
+  outline: none;
+  cursor: pointer;
+}
+
+.playPauseButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+}

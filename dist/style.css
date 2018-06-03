@@ -13,6 +13,19 @@ video {
   height: 48px;
   background: rgba(0, 0, 0, 0.66);
 }
+
+._3y3b3tsxTjtcEVXsOFP4_I {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  height: 48px;
+  outline: none;
+  cursor: pointer;
+}
+
+._3y3b3tsxTjtcEVXsOFP4_I:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
 * {
   padding: 0;
   margin: 0;

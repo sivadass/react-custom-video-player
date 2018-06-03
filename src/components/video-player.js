@@ -39,7 +39,10 @@ class VideoPlayer extends React.Component {
           controls={false}
         />
         <div className={style.videoControls}>
-          <button onClick={this.handlePlayPause.bind(this)}>
+          <button
+            className={style.playPauseButton}
+            onClick={this.handlePlayPause.bind(this)}
+          >
             <img src={"dist/" + this.state.playPauseIcon} width="32px" />
           </button>
         </div>
