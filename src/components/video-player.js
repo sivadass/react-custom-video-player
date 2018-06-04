@@ -5,6 +5,7 @@ import style from "../css/video-player.css";
 import playIcon from "../media/play.svg";
 import pauseIcon from "../media/pause.svg";
 import loadingIcon from "../media/loading.svg";
+import thumbnail from "../media/thumbnail.jpg";
 
 class VideoPlayer extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class VideoPlayer extends React.Component {
   }
   handleCanPlay() {
     this.setState({
-      isLoading: false
+      isLoading: true
     });
   }
   handleWaiting() {
@@ -47,6 +48,7 @@ class VideoPlayer extends React.Component {
       <div className={style.videoContainer}>
         <video
           className={style.videoElement}
+          poster={"dist/" + thumbnail}
           ref={this.videoRef}
           src={"dist/" + videoSrc}
           controls={false}
