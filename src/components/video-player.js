@@ -34,7 +34,7 @@ class VideoPlayer extends React.Component {
   }
   handleCanPlay() {
     this.setState({
-      isLoading: true
+      isLoading: false
     });
   }
   handleWaiting() {
