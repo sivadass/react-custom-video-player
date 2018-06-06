@@ -14,6 +14,7 @@ class VideoPlayer extends React.Component {
 
     this.state = {
       isLoading: false,
+      isEnded: false,
       playPauseIcon: playIcon
     };
   }
@@ -32,7 +33,8 @@ class VideoPlayer extends React.Component {
       });
     }
   }
-  handleCanPlay() {
+
+  handlePlaying(){
     this.setState({
       isLoading: false
     });
@@ -41,6 +43,12 @@ class VideoPlayer extends React.Component {
     this.setState({
       isLoading: true
     });
+  }
+  handleOnEnded(){
+    this.setState({
+      isEnded: true,
+      playPauseIcon: playIcon
+    })
   }
 
   render() {
@@ -52,12 +60,23 @@ class VideoPlayer extends React.Component {
           ref={this.videoRef}
           src={"dist/" + videoSrc}
           controls={false}
-          onCanPlay={this.handleCanPlay.bind(this)}
           onWaiting={this.handleWaiting.bind(this)}
+          onPlaying={this.handlePlaying.bind(this)}
+          onEnded={this.handleOnEnded.bind(this)}
         />
         {this.state.isLoading && (
           <div className={style.videoOverlay}>
             <span className={style.videoLoading}>&nbsp;</span>
+          </div>
+        )}
+        {this.state.isEnded && (
+          <div className={style.videoOverlay}>
+            <button
+              className={style.playPauseButton}
+              onClick={this.handlePlayPause.bind(this)}
+            >
+              <img src={"dist/" + this.state.playPauseIcon} width="64px" height="64px"/>
+            </button>
           </div>
         )}
         <div className={style.videoControls}>
