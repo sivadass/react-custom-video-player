@@ -4,6 +4,7 @@ import style from "../css/video-player.css";
 
 import playIcon from "../media/play.svg";
 import pauseIcon from "../media/pause.svg";
+import fullScreenIcon from "../media/full-screen.svg";
 import loadingIcon from "../media/loading.svg";
 import thumbnail from "../media/thumbnail.jpg";
 
@@ -51,6 +52,10 @@ class VideoPlayer extends React.Component {
     })
   }
 
+  handleFullScreen(){
+    this.videoRef.current.webkitRequestFullscreen();
+  }
+
   render() {
     return (
       <div className={style.videoContainer}>
@@ -86,6 +91,14 @@ class VideoPlayer extends React.Component {
           >
             <img src={"dist/" + this.state.playPauseIcon} width="32px" />
           </button>
+
+          <button
+            className={style.playPauseButton}
+            onClick={this.handleFullScreen.bind(this)}
+          >
+            <img src={"dist/" + fullScreenIcon} width="32px" />
+          </button>
+
         </div>
       </div>
     );
