@@ -73,13 +73,13 @@ video {
 .playPauseButtonLarge {
   background: transparent;
   border: none;
-  padding: 8px;
   height: 64px;
   outline: none;
   cursor: pointer;
 }
 
-.playPauseButton:hover .muteButton:hover,
+.playPauseButton:hover,
+.muteButton:hover,
 .fullScreenButton:hover,
 .playPauseButtonLarge:hover {
   background: rgba(255, 255, 255, 0.15);

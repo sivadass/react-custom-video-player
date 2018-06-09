@@ -7,9 +7,10 @@ import playIcon from "../media/play.svg";
 import pauseIcon from "../media/pause.svg";
 import fullScreenIcon from "../media/full-screen.svg";
 import loadingIcon from "../media/loading.svg";
-import thumbnail from "../media/thumbnail.jpg";
 import muteIcon from "../media/mute.svg";
 import unMuteIcon from "../media/un-mute.svg";
+
+import thumbnail from "../media/thumbnail.jpg";
 
 class VideoPlayer extends React.Component {
   constructor(props) {
@@ -25,14 +26,14 @@ class VideoPlayer extends React.Component {
     };
   }
 
-  componentDidMount() {}
-
+  // Play and Pause
   handlePlayPause() {
     console.log(this.videoRef.current.currentTime);
     if (this.videoRef.current.paused) {
       this.videoRef.current.play();
       this.setState({
-        playPauseIcon: pauseIcon
+        playPauseIcon: pauseIcon,
+        isEnded: false
       });
     } else {
       this.videoRef.current.pause();
@@ -42,6 +43,7 @@ class VideoPlayer extends React.Component {
     }
   }
 
+  // Mute and Unmute
   handleMuteUnMute() {
     let video = this.videoRef.current;
     if (video.muted) {
@@ -57,16 +59,21 @@ class VideoPlayer extends React.Component {
     }
   }
 
+  // Video Play Mode
   handlePlaying(position) {
     this.setState({
       isLoading: false
     });
   }
+
+  // Video Loading Mode
   handleWaiting() {
     this.setState({
       isLoading: true
     });
   }
+
+  // Video Ended Mode
   handleOnEnded() {
     this.setState({
       isEnded: true,
@@ -76,6 +83,7 @@ class VideoPlayer extends React.Component {
     });
   }
 
+  // Full Screen Mode
   handleFullScreen() {
     if (this.videoRef.current.requestFullScreen) {
       this.videoRef.current.requestFullScreen();
@@ -86,23 +94,20 @@ class VideoPlayer extends React.Component {
     }
   }
 
+  // Seekbar
   handleSeekBar(e) {
-    //console.log(this.videoRef.current);
     let value = e.target.value;
     let currentTime = this.videoRef.current.currentTime;
     let totalDuration = this.videoRef.current.duration;
     let position = (totalDuration / 100) * value;
-    console.log(currentTime);
     currentTime = parseFloat(position);
     this.setState({
       currentPosition: value
     });
   }
 
+  // Progress Bar
   handleTimeUpdate() {
-    //console.log(this.videoRef.current.duration);
-    //console.log(this.videoRef.current.currentTime);
-
     let currentTime = this.videoRef.current.currentTime;
     let totalDuration = this.videoRef.current.duration;
     let value = (currentTime / totalDuration) * 100;
@@ -116,9 +121,9 @@ class VideoPlayer extends React.Component {
       <div className={style.videoContainer}>
         <video
           className={style.videoElement}
-          poster={"dist/" + thumbnail}
+          poster={this.props.poster}
           ref={this.videoRef}
-          src={"dist/" + videoSrc}
+          src={this.props.src}
           controls={false}
           onWaiting={this.handleWaiting.bind(this)}
           onPlaying={this.handlePlaying.bind(this)}
@@ -144,7 +149,12 @@ class VideoPlayer extends React.Component {
             </button>
           </div>
         )}
-        <div className={style.videoControls}>
+        <div
+          className={style.videoControls}
+          style={{
+            background: this.props.themeColor ? this.props.themeColor : ""
+          }}
+        >
           <button
             className={style.playPauseButton}
             onClick={this.handlePlayPause.bind(this)}
