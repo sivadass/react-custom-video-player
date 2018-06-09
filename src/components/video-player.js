@@ -1,12 +1,15 @@
 import React from "react";
 import videoSrc from ".././media/sample-video.mp4";
 import style from "../css/video-player.css";
+import Seekbar from "./seek-bar";
 
 import playIcon from "../media/play.svg";
 import pauseIcon from "../media/pause.svg";
 import fullScreenIcon from "../media/full-screen.svg";
 import loadingIcon from "../media/loading.svg";
 import thumbnail from "../media/thumbnail.jpg";
+import muteIcon from "../media/mute.svg";
+import unMuteIcon from "../media/un-mute.svg";
 
 class VideoPlayer extends React.Component {
   constructor(props) {
@@ -16,9 +19,13 @@ class VideoPlayer extends React.Component {
     this.state = {
       isLoading: false,
       isEnded: false,
-      playPauseIcon: playIcon
+      playPauseIcon: playIcon,
+      muteUnMuteIcon: unMuteIcon,
+      currentPosition: 0
     };
   }
+
+  componentDidMount() {}
 
   handlePlayPause() {
     console.log(this.videoRef.current.currentTime);
@@ -35,7 +42,22 @@ class VideoPlayer extends React.Component {
     }
   }
 
-  handlePlaying(){
+  handleMuteUnMute() {
+    let video = this.videoRef.current;
+    if (video.muted) {
+      video.muted = false;
+      this.setState({
+        muteUnMuteIcon: unMuteIcon
+      });
+    } else {
+      video.muted = true;
+      this.setState({
+        muteUnMuteIcon: muteIcon
+      });
+    }
+  }
+
+  handlePlaying(position) {
     this.setState({
       isLoading: false
     });
@@ -45,15 +67,48 @@ class VideoPlayer extends React.Component {
       isLoading: true
     });
   }
-  handleOnEnded(){
+  handleOnEnded() {
     this.setState({
       isEnded: true,
-      playPauseIcon: playIcon
-    })
+      playPauseIcon: playIcon,
+      muteUnMuteIcon: unMuteIcon,
+      currentPosition: 0
+    });
   }
 
-  handleFullScreen(){
-    this.videoRef.current.webkitRequestFullscreen();
+  handleFullScreen() {
+    if (this.videoRef.current.requestFullScreen) {
+      this.videoRef.current.requestFullScreen();
+    } else if (this.videoRef.current.mozRequestFullScreen) {
+      this.videoRef.current.mozRequestFullScreen();
+    } else if (this.videoRef.current.webkitRequestFullScreen) {
+      this.videoRef.current.webkitRequestFullScreen();
+    }
+  }
+
+  handleSeekBar(e) {
+    //console.log(this.videoRef.current);
+    let value = e.target.value;
+    let currentTime = this.videoRef.current.currentTime;
+    let totalDuration = this.videoRef.current.duration;
+    let position = (totalDuration / 100) * value;
+    console.log(currentTime);
+    currentTime = parseFloat(position);
+    this.setState({
+      currentPosition: value
+    });
+  }
+
+  handleTimeUpdate() {
+    //console.log(this.videoRef.current.duration);
+    //console.log(this.videoRef.current.currentTime);
+
+    let currentTime = this.videoRef.current.currentTime;
+    let totalDuration = this.videoRef.current.duration;
+    let value = (currentTime / totalDuration) * 100;
+    this.setState({
+      currentPosition: value
+    });
   }
 
   render() {
@@ -68,6 +123,7 @@ class VideoPlayer extends React.Component {
           onWaiting={this.handleWaiting.bind(this)}
           onPlaying={this.handlePlaying.bind(this)}
           onEnded={this.handleOnEnded.bind(this)}
+          onTimeUpdate={this.handleTimeUpdate.bind(this)}
         />
         {this.state.isLoading && (
           <div className={style.videoOverlay}>
@@ -77,10 +133,14 @@ class VideoPlayer extends React.Component {
         {this.state.isEnded && (
           <div className={style.videoOverlay}>
             <button
-              className={style.playPauseButton}
+              className={style.playPauseButtonLarge}
               onClick={this.handlePlayPause.bind(this)}
             >
-              <img src={"dist/" + this.state.playPauseIcon} width="64px" height="64px"/>
+              <img
+                src={"dist/" + this.state.playPauseIcon}
+                width="64px"
+                height="64px"
+              />
             </button>
           </div>
         )}
@@ -92,13 +152,24 @@ class VideoPlayer extends React.Component {
             <img src={"dist/" + this.state.playPauseIcon} width="32px" />
           </button>
 
+          <Seekbar
+            handleSeekBar={this.handleSeekBar.bind(this)}
+            value={this.state.currentPosition}
+          />
+
           <button
-            className={style.playPauseButton}
+            className={style.muteButton}
+            onClick={this.handleMuteUnMute.bind(this)}
+          >
+            <img src={"dist/" + this.state.muteUnMuteIcon} width="32px" />
+          </button>
+
+          <button
+            className={style.fullScreenButton}
             onClick={this.handleFullScreen.bind(this)}
           >
             <img src={"dist/" + fullScreenIcon} width="32px" />
           </button>
-
         </div>
       </div>
     );
