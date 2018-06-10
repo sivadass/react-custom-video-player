@@ -124,7 +124,6 @@ video {
 }
 
 /*hide controls from shadow DOM in webkit browsers*/
-/* hides controls only in fullscreen, but shows them in normal screen even if controls is set to false*/
 /*the most specific pseudo-element to target video controls on full screen*/
 video::-webkit-media-controls-enclosure {
   display: none !important;
