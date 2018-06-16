@@ -100,10 +100,8 @@ class VideoPlayer extends React.Component {
     let currentTime = this.videoRef.current.currentTime;
     let totalDuration = this.videoRef.current.duration;
     let position = (totalDuration / 100) * value;
-    currentTime = parseFloat(position);
-    this.setState({
-      currentPosition: value
-    });
+    currentTime = Number(position.toFixed(1));
+    this.videoRef.current.currentTime = currentTime;
   }
 
   // Progress Bar
